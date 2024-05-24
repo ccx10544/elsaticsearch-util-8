@@ -132,6 +132,7 @@ public class ElasticsearchUtil {
             boolean exists = indexExists(indexName);
             if (!exists) {
                 log.debug("add document index {} is no exist indexName {} id {}", indexName, id, doc);
+                return false;
             }
             exists = elasticsearchClient.exists(e -> e.index(indexName).id(id)).value();
             if (exists) {
